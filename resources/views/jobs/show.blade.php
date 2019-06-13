@@ -21,14 +21,17 @@
                     <div class="card-header">Short Info</div>
 
                     <div class="card-body">
-                        <p>Company: {{$job->company->cname}}</p>
+                        <p>Company: <a href="{{route('company.index',[$job->company->id, $job->company->slug])}}"> {{$job->company->cname}}</a></p>
                         <p>Address: {{$job->address}}</p>
                         <p>Employment Type: {{$job->type}}</p>
                         <p>Position: {{$job->position}}</p>
                         <p>Date: {{$job->created_at->diffForHumans()}}</p>
-                        <button class="btn btn-success">Apply</button>
                     </div>
                 </div>
+                <br/>
+                @if(Auth::check()&&Auth::user()->user_type=='seeker')
+                    <button class="btn btn-success" style="width: 100%;">Apply</button>
+                @endif
             </div>
         </div>
     </div>

@@ -20,3 +20,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/jobs/{id}/{job}','JobController@show')->name('jobs.show');
 Route::get('/events/{id}/{event}','EventController@show')->name('events.show');
+
+//Company
+Route::get('/company/{id}/{company}','CompanyController@index')->name('company.index');
+
+//Venue
+Route::get('/venue/{id}/{venue}','VenueController@index')->name('venue.index');

@@ -21,14 +21,16 @@
                     <div class="card-header">Short Info</div>
 
                     <div class="card-body">
-                        <p>Company: {{$event->venue->vname}}</p>
+                        <p>Venue: <a href="{{route('venue.index',[$event->venue->id, $event->venue->slug])}}">{{$event->venue->vname}}</a></p>
                         <p>Address: {{$event->venue->address}}</p>
                         <p>Type: {{$event->type}}</p>
                         <p>Cost: {{$event->event_price}}</p>
                         <p>Date: {{$event->created_at->diffForHumans()}}</p>
-                        <button class="btn btn-success">Show Interest</button>
+
                     </div>
                 </div>
+                <br/>
+                <button class="btn btn-success" style="width: 100%;">Show Interest</button>
             </div>
         </div>
     </div>
