@@ -26,3 +26,10 @@ Route::get('/company/{id}/{company}','CompanyController@index')->name('company.i
 
 //Venue
 Route::get('/venue/{id}/{venue}','VenueController@index')->name('venue.index');
+
+//User Profile
+Route::get('user/profile', 'UserprofileController@index');
+Route::post('user/profile/create', 'UserprofileController@store')->name('profile.create');
+Route::post('user/coverletter', 'UserprofileController@coverletter')->name('cover.letter');
+Route::post('user/resume', 'UserprofileController@resume')->name('resume');
+Route::post('user/avatar', 'UserprofileController@avatar')->name('avatar');
