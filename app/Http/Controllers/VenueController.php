@@ -17,22 +17,22 @@ class VenueController extends Controller
 
 
     public function store(Request $request) {
-        $this->validate($request,[
-            'address'=>'required',
-            'town'=>'required',
-            'county'=>'required',
-            'postcode'=>'required',
-            'latitude'=>'required',
-            'longitude'=>'required',
-            'website'=>'required|min:5',
-            'phone'=>'required|min:8',
-//            'phone_number'=>'required|regex:/(07)[0-9]{9}/',
-            'slogan'=>'required|min:10',
-            'description'=>'required|min:10'
-        ]);
-
+//        $this->validate($request,[
+//            'address'=>'required',
+//            'town'=>'required',
+//            'county'=>'required',
+//            'postcode'=>'required',
+//            'latitude'=>'required',
+//            'longitude'=>'required',
+//            'website'=>'required|min:5',
+//            'phone'=>'required|min:8',
+////            'phone_number'=>'required|regex:/(07)[0-9]{9}/',
+//            'slogan'=>'required|min:10',
+//            'description'=>'required|min:10'
+//        ]);
         $user_id = auth()->user()->id;
-        echo 'this is teh user ID: '.$user_id;
+
+
         Venue::where('user_id', $user_id)->update([
             'address'=>request('address'),
             'town'=>request('town'),
@@ -46,7 +46,7 @@ class VenueController extends Controller
             'longitude'=>request('longitude')
         ]);
 
-        return redirect()->back()->with('message', 'Company Successfully Updated!');
+        return redirect()->back()->with('message', 'Venue Successfully Updated!');
 
     }
 
