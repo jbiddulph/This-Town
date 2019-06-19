@@ -4,13 +4,17 @@
     <div class="container">
         <div class="col-md-12">
             <div class="venue-profile">
-                <img src="{{asset('cover/tumblr-image-sizes-banner.png')}}" alt="" style="width:100%;">
+                @if(empty(Auth::user()->venue->cover_photo))
+                    <img src="{{asset('avatar/avatar-icon.png')}}" width="80" />
+                @else
+                    <img src="{{asset('uploads/coverphoto')}}/{{Auth::user()->venue->cover_photo}}" style="width:100%;" />
+                @endif
                 <div class="venue-desc">
-                    <img src="{{asset('avatar/avatar-icon.png')}}" alt="" style="width:100px;">
-                    {{$venue->description}}
-                    <h1>{{$venue->vname}}</h1>
-{{--                    <p>Slogan-{{$company->slogan}}&nbsp;Address-{{$company->address}}&nbsp;--}}
-{{--                        Phone-{{$company->phone}}&nbsp;Website-{{$company->website}}</p>--}}
+                    @if(empty(Auth::user()->venue->logo))
+                        <img src="{{asset('avatar/avatar-icon.png')}}" style="width: 100px" alt="">
+                    @else
+                        <img src="{{asset('uploads/logo')}}/{{Auth::user()->venue->logo}}" style="width: 100px" alt="">
+                    @endif
                 </div>
             </div>
 

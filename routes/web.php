@@ -12,24 +12,40 @@
 */
 
 Route::get('/', 'JobController@index');
-Route::get('/events', 'EventController@index');
+Route::get('events', 'EventController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('home', 'HomeController@index')->name('home');
 
-Route::get('/jobs/{id}/{job}','JobController@show')->name('jobs.show');
-Route::get('/events/{id}/{event}','EventController@show')->name('events.show');
+Route::get('jobs/{id}/{job}','JobController@show')->name('jobs.show');
+Route::get('events/{id}/{event}','EventController@show')->name('events.show');
 
 //Company
-Route::get('/company/{id}/{company}','CompanyController@index')->name('company.index');
+Route::get('company/{id}/{company}','CompanyController@index')->name('company.index');
+Route::get('company/create','CompanyController@create')->name('company.view');
+Route::post('company/create','CompanyController@store')->name('company.store');
+Route::post('company/coverphoto','CompanyController@coverPhoto')->name('cover.photo');
+Route::post('company/logo','CompanyController@companyLogo')->name('company.logo');
 
 //Venue
-Route::get('/venue/{id}/{venue}','VenueController@index')->name('venue.index');
+Route::get('venue/{id}/{venue}','VenueController@index')->name('venue.index');
+Route::get('venue/create','VenueController@create')->name('venue.view');
+Route::post('venue/create','VenueController@store')->name('venue.store');
+Route::post('venue/coverphoto','VenueController@coverPhoto')->name('cover.photo');
+Route::post('venue/logo','VenueController@venueLogo')->name('venue.logo');
 
 //User Profile
-Route::get('user/profile', 'UserprofileController@index');
+Route::get('user/profile', 'UserprofileController@index')->name('profile.view');
 Route::post('user/profile/create', 'UserprofileController@store')->name('profile.create');
 Route::post('user/coverletter', 'UserprofileController@coverletter')->name('cover.letter');
 Route::post('user/resume', 'UserprofileController@resume')->name('resume');
 Route::post('user/avatar', 'UserprofileController@avatar')->name('avatar');
+
+//Employer view
+Route::view('employer/register', 'auth.employer-register')->name('employer.register');
+Route::post('employer/register', 'EmployerRegisterController@employerRegister')->name('emp.register');
+
+//Venue view
+Route::view('manager/register', 'auth.manager-register')->name('manager.register');
+Route::post('manager/register', 'ManagerRegisterController@managerRegister')->name('man.register');

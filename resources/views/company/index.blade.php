@@ -1,12 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="col-md-12">
+    <div class="container">
+        <div class="col-md-12">
         <div class="company-profile">
-            <img src="{{asset('cover/tumblr-image-sizes-banner.png')}}" alt="" style="width:100%;">
+            @if(empty(Auth::user()->company->cover_photo))
+                <img src="{{asset('avatar/avatar-icon.png')}}" width="80" />
+            @else
+                <img src="{{asset('uploads/coverphoto')}}/{{Auth::user()->company->cover_photo}}" style="width:100%;" />
+            @endif
             <div class="company-desc">
-                <img src="{{asset('avatar/avatar-icon.png')}}" alt="" style="width:100px;">
+                @if(empty(Auth::user()->company->logo))
+                    <img src="{{asset('avatar/avatar-icon.png')}}" style="width: 100px" alt="">
+                @else
+                    <img src="{{asset('uploads/logo')}}/{{Auth::user()->company->logo}}" style="width: 100px" alt="">
+                @endif
                 {{$company->description}}
                 <h1>{{$company->cname}}</h1>
                 <p>Slogan-{{$company->slogan}}&nbsp;Address-{{$company->address}}&nbsp;

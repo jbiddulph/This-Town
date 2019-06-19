@@ -2,10 +2,12 @@
 
 namespace App;
 
+use App\Company;
+use App\Profile;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Profile;
+use App\Venue;
 
 class User extends Authenticatable
 {
@@ -40,5 +42,12 @@ class User extends Authenticatable
 
     public function profile() {
         return $this->hasOne(Profile::class);
+    }
+
+    public function company() {
+        return $this->hasOne(Company::class);
+    }
+    public function venue() {
+        return $this->hasOne(Venue::class);
     }
 }
