@@ -69,6 +69,12 @@
                                 </div>
                             </li>
                         @else
+
+                            <li class="nav-item">
+                                <a href="{{route('job.create')}}">
+                                    <button class="btn btn-secondary">Post a Job</button>
+                                </a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     @if(Auth::user()->user_type=='employer')
@@ -112,7 +118,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
     </div>

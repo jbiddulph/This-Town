@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+    @if(empty(Auth::user()->venue->cover_photo))
+        <img src="{{asset('avatar/avatar-icon.png')}}" width="80" />
+    @else
+        <img src="{{asset('uploads/coverphoto')}}/{{Auth::user()->venue->cover_photo}}" style="width:100%;" />
+    @endif
     <div class="container">
         <div class="col-md-12">
             <div class="venue-profile">
-                @if(empty(Auth::user()->venue->cover_photo))
-                    <img src="{{asset('avatar/avatar-icon.png')}}" width="80" />
-                @else
-                    <img src="{{asset('uploads/coverphoto')}}/{{Auth::user()->venue->cover_photo}}" style="width:100%;" />
-                @endif
                 <div class="venue-desc">
                     @if(empty(Auth::user()->venue->logo))
                         <img src="{{asset('avatar/avatar-icon.png')}}" style="width: 100px" alt="">
