@@ -71,6 +71,11 @@
                         @else
 
                             <li class="nav-item">
+                                <a href="{{route('event.create')}}">
+                                    <button class="btn btn-secondary">Post an Event</button>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{route('job.create')}}">
                                     <button class="btn btn-secondary">Post a Job</button>
                                 </a>
