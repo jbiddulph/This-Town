@@ -31,7 +31,10 @@
                                     </td>
                                     <td><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;Start Time: {{$event->event_startdate}}</td>
                                     <td><i class="fas fa-calendar-alt"></i>&nbsp;Date: {{$event->created_at->diffForHumans()}}</td>
-                                    <td><a href="{{route('events.show', [$event->id, $event->slug])}}"> <button class="btn btn-success btn-sm">More</button></a></td>
+                                    <td>
+                                        <a href="{{route('events.show', [$event->id, $event->slug])}}"> <button class="btn btn-success btn-sm">More</button></a>
+                                        <a href="{{route('event.edit', [$event->id])}}"><button class="btn btn-dark">Edit</button></a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

@@ -11,7 +11,7 @@ use App\Http\Requests\JobPostRequest;
 class JobController extends Controller
 {
     public function index() {
-        $jobs = Job::all()->take(10);
+        $jobs = Job::all();
         return view('welcome', compact('jobs'));
     }
 
@@ -27,6 +27,18 @@ class JobController extends Controller
     public function myjob() {
         $jobs = Job::where('user_id',auth()->user()->id)->get();
         return view('jobs.myjob', compact('jobs'));
+    }
+
+    public function edit($id) {
+        $job = Job::findOrFail($id);
+        return view('jobs.edit', compact('job'));
+    }
+
+    public function update(Request $request, $id) {
+//        dd($request->all());
+        $job = Job::findOrFail($id);
+        $job->update($request->all());
+        return redirect()->back()->with('message', 'Job updated successfully!');
     }
 
     public function store(JobPostRequest $request) {

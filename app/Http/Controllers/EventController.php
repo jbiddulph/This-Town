@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Job;
 use Illuminate\Http\Request;
 use App\Event;
 use App\Venue;
@@ -11,7 +12,7 @@ use App\Http\Requests\EventPostRequest;
 class EventController extends Controller
 {
     public function index() {
-        $events = Event::all()->take(10);
+        $events = Event::all();
         return view('events.index', compact('events'));
     }
 
@@ -27,6 +28,18 @@ class EventController extends Controller
     public function myevent() {
         $events = Event::where('user_id',auth()->user()->id)->get();
         return view('events.myevent', compact('events'));
+    }
+
+    public function edit($id) {
+        $event = Event::findOrFail($id);
+        return view('events.edit', compact('event'));
+    }
+
+    public function update(Request $request, $id) {
+//        dd($request->all());
+        $event = Event::findOrFail($id);
+        $event->update($request->all());
+        return redirect()->back()->with('message', 'Event updated successfully!');
     }
 
     public function store(EventPostRequest $request) {

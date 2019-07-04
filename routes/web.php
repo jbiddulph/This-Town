@@ -15,13 +15,15 @@ Route::get('/', 'JobController@index');
 Route::get('jobs/create', 'JobController@create')->name('job.create');
 Route::post('jobs/create', 'JobController@store')->name('job.store');
 Route::get('jobs/{id}/edit', 'JobController@edit')->name('job.edit');
-Route::get('jobs/my-jobs', 'JobController@myjob')->name('job.edit');
+Route::post('jobs/{id}/edit', 'JobController@update')->name('job.update');
+Route::get('jobs/my-jobs', 'JobController@myjob')->name('my.job');
 
 Route::get('events', 'EventController@index');
 Route::get('events/create', 'EventController@create')->name('event.create');
 Route::post('events/create', 'EventController@store')->name('event.store');
 Route::get('events/{id}/edit', 'EventController@edit')->name('event.edit');
-Route::get('events/my-events', 'EventController@myevent')->name('event.edit');
+Route::post('events/{id}/edit', 'EventController@update')->name('event.update');
+Route::get('events/my-events', 'EventController@myevent')->name('my.event');
 
 Auth::routes();
 

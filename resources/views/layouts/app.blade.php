@@ -10,7 +10,14 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script defer src="{{ asset('js/app.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script defer src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( ".datepicker" ).datepicker();
+        } );
+    </script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,7 +25,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/solid.css" integrity="sha384-ypqxM+6jj5ropInEPawU1UEhbuOuBkkz59KyIbbsTu4Sw62PfV3KUnQadMbIoAzq" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/fontawesome.css" integrity="sha384-NnhYAEceBbm5rQuNvCv6o4iIoPZlkaWfvuXVh4XkRNvHWKgu/Mk2nEjFZpPQdwiz" crossorigin="anonymous">
@@ -69,17 +76,20 @@
                                 </div>
                             </li>
                         @else
-
+                        @if(Auth::check()&&Auth::user()->user_type=='manager')
                             <li class="nav-item">
                                 <a href="{{route('event.create')}}">
                                     <button class="btn btn-secondary">Post an Event</button>
                                 </a>
                             </li>
+                        @endif
+                        @if(Auth::check()&&Auth::user()->user_type=='employer')
                             <li class="nav-item">
                                 <a href="{{route('job.create')}}">
                                     <button class="btn btn-secondary">Post a Job</button>
                                 </a>
                             </li>
+                        @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     @if(Auth::user()->user_type=='employer')
@@ -97,10 +107,12 @@
                                         <a class="dropdown-item" href="{{ route('company.view') }}">
                                             {{ __('Company') }}
                                         </a>
+                                        <a class="dropdown-item" href="{{ route('my.job') }}">My Jobs</a>
                                     @elseif(Auth::user()->user_type=='manager')
                                         <a class="dropdown-item" href="{{ route('venue.view') }}">
                                             {{ __('Venue') }}
                                         </a>
+                                        <a class="dropdown-item" href="{{ route('my.event') }}">My Events</a>
                                     @else
                                         <a class="dropdown-item" href="{{ route('profile.view') }}">
                                             {{ __('Profile') }}
