@@ -11,6 +11,11 @@ use App\Http\Requests\EventPostRequest;
 
 class EventController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('manager',['except'=>array('index','show')]);
+    }
+
     public function index() {
         $events = Event::all();
         return view('events.index', compact('events'));

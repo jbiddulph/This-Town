@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class VenueController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('manager',['except'=>array('index')]);
+    }
+
     public function index($id, Venue $venue) {
         return view('venue.index',compact('venue'));
     }

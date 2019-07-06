@@ -25,7 +25,7 @@
 
                             <div class="form-group">
                                 <label for="description">Description:</label>
-                                <textarea name="description" class="form-control @error('description') is-invalid @enderror" value="{{ old('description') }}"></textarea>
+                                <textarea name="description" class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
                                 @if($errors->has('description'))
                                     <span class="invalid-feedback" role="alert">
                                     <strong>{{$errors->first('description')}}</strong>
@@ -94,7 +94,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="lastdate">Last date:</label>
-                                <input type="text" name="last_date" class="form-control @error('last_date') is-invalid @enderror" value="{{ old('last_date') }}">
+                                <input type="text" name="last_date" class="form-control datepicker @error('last_date') is-invalid @enderror" value="{{ old('last_date') }}">
                                 @if($errors->has('last_date'))
                                     <span class="invalid-feedback" role="alert">
                                     <strong>{{$errors->first('last_date')}}</strong>

@@ -25,7 +25,7 @@
 
                             <div class="form-group">
                                 <label for="description">Description:</label>
-                                <textarea name="description" class="form-control @error('description') is-invalid @enderror" value="{{ old('description') }}"></textarea>
+                                <textarea name="description" class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
                                 @if($errors->has('description'))
                                     <span class="invalid-feedback" role="alert">
                                     <strong>{{$errors->first('description')}}</strong>
@@ -34,7 +34,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="role">Role:</label>
-                                <textarea name="roles" class="form-control @error('roles') is-invalid @enderror" value="{{ old('roles') }}"></textarea>
+                                <textarea name="roles" class="form-control @error('roles') is-invalid @enderror">{{ old('roles') }}</textarea>
                                 @if($errors->has('roles'))
                                     <span class="invalid-feedback" role="alert">
                                     <strong>{{$errors->first('roles')}}</strong>
