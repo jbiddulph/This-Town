@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 
-use App\Job;
 use Illuminate\Http\Request;
 use App\Event;
 use App\Venue;
 use App\Http\Requests\EventPostRequest;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('manager',['except'=>array('index','show')]);
+        $this->middleware('manager',['except'=>array('index','show','showInterest','checkAttending')]);
     }
 
     public function index() {
@@ -47,6 +47,21 @@ class EventController extends Controller
         return redirect()->back()->with('message', 'Event updated successfully!');
     }
 
+    public function interestsAttending() {
+        $attendees = Event::has('users')->where('user_id',auth()->user()->id)->get();
+        return view('events.attendees', compact('attendees'));
+    }
+
+    public function showInterests() {
+        $attendees = Event::has('users')->where('user_id',auth()->user()->id)->where('status','Interested')->get();
+        return view('events.attendees', compact('attendees'));
+    }
+
+    public function showAttending() {
+        $attendees = Event::has('users')->where('user_id',auth()->user()->id)->where('status','Attending')->get();
+        return view('events.attendees', compact('attendees'));
+    }
+
     public function store(EventPostRequest $request) {
         $user_id = auth()->user()->id;
         $venue = Venue::where('user_id',$user_id)->first();
@@ -78,5 +93,19 @@ class EventController extends Controller
             'last_date'=>request('last_date')
         ]);
         return redirect()->back()->with('message','Event posted successfully!');
+
+    }
+
+    public function showInterest(Request $request,$id) {
+        $eventID = Event::find($id);
+        $status = request('status');
+        $eventID->users()->attach(Auth::user()->id, ['status' => $request->status]);
+        return redirect()->back()->with('message','Shown Interest!');
+    }
+
+    public function checkAttending(Request $request,$id) {
+        $eventID = Event::find($id);
+        $eventID->users()->attach(Auth::user()->id, ['status' => $request->status]);
+        return redirect()->back()->with('message','Shown Interest!');
     }
 }

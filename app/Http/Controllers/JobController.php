@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 use App\Job;
 use App\Company;
 use App\Http\Requests\JobPostRequest;
+use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('employer',['except'=>array('index','show')]);
+        $this->middleware('employer',['except'=>array('index','show','apply')]);
     }
 
     public function index() {
@@ -65,5 +66,17 @@ class JobController extends Controller
             'last_date'=>request('last_date')
         ]);
         return redirect()->back()->with('message','Job posted successfully!');
+    }
+
+    public function apply(Request $request,$id) {
+        $jobID = Job::find($id);
+        $jobID->users()->attach(Auth::user()->id);
+        return redirect()->back()->with('message','Application sent!');
+
+    }
+
+    public function applicant() {
+        $applicants = Job::has('users')->where('user_id', auth()->user()->id)->get();
+        return view('jobs.applicants',compact('applicants'));
     }
 }

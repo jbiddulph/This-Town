@@ -16,4 +16,15 @@ class Event extends Model
     public function venue(){
         return $this->belongsTo('App\Venue');
     }
+    public function users() {
+        return $this->belongsToMany(User::class)->withTimeStamps();
+    }
+    public function showInterest() {
+        return \DB::table('event_user')->where('user_id',auth()->user()->id)->where('status','Interested')->where
+        ('event_id',$this->id)->exists();
+    }
+    public function checkAttending() {
+        return \DB::table('event_user')->where('user_id',auth()->user()->id)->where('status','Attending')->where
+        ('event_id',$this->id)->exists();
+    }
 }

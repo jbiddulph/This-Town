@@ -110,6 +110,7 @@
                                             {{ __('Company') }}
                                         </a>
                                         <a class="dropdown-item" href="{{ route('my.job') }}">My Jobs</a>
+                                        <a class="dropdown-item" href="{{ route('applicant') }}">My Applicants</a>
                                     @elseif(Auth::user()->user_type=='manager')
                                         <a class="dropdown-item" href="{{ route('venue.view') }}">
                                             {{ __('Venue') }}

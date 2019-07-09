@@ -4,6 +4,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
+                @if(Session::has('message'))
+                    <div class="alert alert-success">
+                        {{Session::get('message')}}
+                    </div>
+                @endif
                 <div class="card">
                     <div class="card-header">{{$event->title}}</div>
 
@@ -29,8 +34,34 @@
 
                     </div>
                 </div>
-                <br/>
-                <button class="btn btn-success" style="width: 100%;">Show Interest</button>
+                <div class="row actions">
+                    <div class="col-md-6">
+                        @if(Auth::check()&&Auth::user()->user_type=='seeker')
+                            <span class="interest-btn">
+                        @if(!$event->showInterest())
+                                    <form action="{{route('showInterest', [$event->id])}}" method="POST">@csrf
+                                <input type="hidden" name="status" value="Interested">
+                                <button type="submit" class="btn btn-success" style="width: 100%;">Interested</button>
+                            </form>
+                                @else
+                                    <button class="btn btn-success" disabled style="width: 100%;">Shown Interest</button>
+                                @endif
+                        </span>
+                    </div>
+                    <div class="col-md-6">
+                        <span class="attending-btn">
+                        @if(!$event->checkAttending())
+                                <form action="{{route('checkAttending', [$event->id])}}" method="POST">@csrf
+                                <input type="hidden" name="status" value="Attending">
+                                <button type="submit" class="btn btn-success" style="width: 100%;">Going</button>
+                            </form>
+                            @else
+                                <button class="btn btn-success" disabled style="width: 100%;">Attending</button>
+                            @endif
+                        </span>
+                        @endif
+                    </div>
+                </div>
             </div>
         </div>
     </div>
