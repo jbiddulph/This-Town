@@ -109,7 +109,7 @@
                     </div>
                 </div>
                 <br />
-                <form action="{{route('cover.photo')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('vcover.photo')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card">
                         <div class="card-header">

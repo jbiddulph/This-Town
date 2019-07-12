@@ -28,6 +28,29 @@
             </table>
 
         </div>
+        <div>
+            <a href="{{route('allevents')}}"><button class="btn btn-success btn-lg" style="width:100%;">Browse all events</button></a>
+        </div>
+        <br/>
+        <br/>
+        <h1>Featured Venues</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+
+            @foreach($venues as $venue)
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{asset('uploads/logo')}}/{{$venue->logo}}" width="80" />
+                        <div class="card-body">
+                            <h5 class="card-title">{{str_limit($venue->vname,23)}}</h5>
+                            <p class="card-text">{{str_limit($venue->description,20)}}</p>
+                            <a href="{{route('venue.index',[$venue->id,$venue->slug])}}" class="btn btn-primary">Visit Venue</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach;
+        </div>
     </div>
 @endsection
 <style>

@@ -19,6 +19,7 @@ Route::get('jobs/{id}/edit', 'JobController@edit')->name('job.edit');
 Route::post('jobs/{id}/edit', 'JobController@update')->name('job.update');
 Route::get('jobs/my-jobs', 'JobController@myjob')->name('my.job');
 Route::get('jobs/applications', 'JobController@applicant')->name('applicant');
+Route::get('jobs/alljobs', 'JobController@allJobs')->name('alljobs');
 
 //Events
 Route::get('events', 'EventController@index');
@@ -27,6 +28,7 @@ Route::post('events/create', 'EventController@store')->name('event.store');
 Route::get('events/{id}/edit', 'EventController@edit')->name('event.edit');
 Route::post('events/{id}/edit', 'EventController@update')->name('event.update');
 Route::get('events/my-events', 'EventController@myevent')->name('my.event');
+Route::get('events/allevents', 'EventController@allEvents')->name('allevents');
 
 Route::get('events/interest-attending', 'EventController@interestsAttending')->name('intatt');
 Route::get('events/interests', 'EventController@showInterests')->name('interests');
@@ -45,14 +47,14 @@ Route::get('events/{id}/{event}','EventController@show')->name('events.show');
 Route::get('company/{id}/{company}','CompanyController@index')->name('company.index');
 Route::get('company/create','CompanyController@create')->name('company.view');
 Route::post('company/create','CompanyController@store')->name('company.store');
-Route::post('company/coverphoto','CompanyController@coverPhoto')->name('cover.photo');
+Route::post('company/coverphoto','CompanyController@coverPhoto')->name('ccover.photo');
 Route::post('company/logo','CompanyController@companyLogo')->name('company.logo');
 
 //Venue
 Route::get('venue/{id}/{venue}','VenueController@index')->name('venue.index');
 Route::get('venue/create','VenueController@create')->name('venue.view');
 Route::post('venue/create','VenueController@store')->name('venue.store');
-Route::post('venue/coverphoto','VenueController@coverPhoto')->name('cover.photo');
+Route::post('venue/coverphoto','VenueController@coverPhoto')->name('vcover.photo');
 Route::post('venue/logo','VenueController@venueLogo')->name('venue.logo');
 
 //User Profile

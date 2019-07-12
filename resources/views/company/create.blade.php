@@ -75,7 +75,7 @@
                 <div class="card">
                     <div class="card-header">About your company</div>
                     <div class="card-body">
-                        <p>Name: {{Auth::user()->company->cname}}</p>
+                        <p>Namexx: {{Auth::user()->company->cname}}</p>
                         <p>Address: {{Auth::user()->company->address}}</p>
                         <p>Phone: {{Auth::user()->company->phone}}</p>
                         <p>Website: <a href="http://{{Auth::user()->company->website}}">{{Auth::user()->company->website}}</a></p>
@@ -85,11 +85,11 @@
                     </div>
                 </div>
                 <br />
-                <form action="{{route('cover.photo')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('ccover.photo')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card">
                         <div class="card-header">
-                            Update Cover letter
+                            Update Cover photo
                         </div>
                         <div class="card-body">
                             <input type="file" class="form-control" name="cover_photo">

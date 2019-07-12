@@ -13,12 +13,13 @@ class JobController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('employer',['except'=>array('index','show','apply')]);
+        $this->middleware('employer',['except'=>array('index','show','apply','allJobs')]);
     }
 
     public function index() {
-        $jobs = Job::all();
-        return view('welcome', compact('jobs'));
+        $jobs = Job::latest()->limit(10)->where('status',1)->get();
+        $companies = Company::get()->random(12);
+        return view('welcome', compact('jobs','companies'));
     }
 
     public function show($id, Job $job) {
@@ -78,5 +79,10 @@ class JobController extends Controller
     public function applicant() {
         $applicants = Job::has('users')->where('user_id', auth()->user()->id)->get();
         return view('jobs.applicants',compact('applicants'));
+    }
+
+    public function allJobs() {
+        $jobs = Job::latest()->paginate(10);
+        return view('jobs.alljobs',compact('jobs'));
     }
 }

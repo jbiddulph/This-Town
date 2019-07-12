@@ -8,17 +8,19 @@ use App\Event;
 use App\Venue;
 use App\Http\Requests\EventPostRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('manager',['except'=>array('index','show','showInterest','checkAttending')]);
+        $this->middleware('manager',['except'=>array('index','show','showInterest','checkAttending','allEvents')]);
     }
 
     public function index() {
-        $events = Event::all();
-        return view('events.index', compact('events'));
+        $events = Event::latest()->limit(10)->where('status',1)->get();
+        $venues = Venue::get()->random(12);
+        return view('events.index', compact('events','venues'));
     }
 
     public function show($id, Event $event) {
@@ -48,8 +50,15 @@ class EventController extends Controller
     }
 
     public function interestsAttending() {
+        $users = DB::table('users')
+            ->join('event_user', 'users.id', '=', 'event_user.user_id')
+            ->join('events', 'event_user.event_id', '=', 'events.id')
+            ->select('users.*', 'event_user.status')
+            ->where("event_user.status","=","Attending ")
+            ->get();
+
         $attendees = Event::has('users')->where('user_id',auth()->user()->id)->get();
-        return view('events.attendees', compact('attendees'));
+        return view('events.attendees', compact('attendees', 'users'));
     }
 
     public function showInterests() {
@@ -107,5 +116,9 @@ class EventController extends Controller
         $eventID = Event::find($id);
         $eventID->users()->attach(Auth::user()->id, ['status' => $request->status]);
         return redirect()->back()->with('message','Shown Interest!');
+    }
+    public function allEvents() {
+        $events = Event::latest()->paginate(10);
+        return view('events.allevents',compact('events'));
     }
 }
