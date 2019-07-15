@@ -8,21 +8,35 @@
                     <div class="card-header">{{ __('Manager Registration') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('man.register2') }}">
+                        <form method="POST" action="{{ route('man.register.post', $venue) }}">
                             @csrf
 
-                            <input type="hidden" value="{{$venue->id}}" name="venueID">
+
                             <input type="hidden" value="manager" name="user_type">
 
                             <div class="form-group row">
                                 <label for="vname" class="col-md-4 col-form-label text-md-right">{{ __('Venue name') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="vname" type="text" class="form-control @error('vname') is-invalid @enderror" name="vname" value="{{ old('vname') }}" required autocomplete="vname" autofocus>
+                                    <input id="vname" readonly="readonly" type="text" class="form-control @error('vname') is-invalid @enderror" name="vname" value="{{ $venue->vname }}"  autocomplete="vname" autofocus>
 
                                     @if($errors->has('vname'))
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('vname') }}</strong>
+                                    </span>
+                                        @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="vname" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"  autocomplete="name" autofocus>
+
+                                    @if($errors->has('name'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                         @enderror
                                 </div>
