@@ -5,12 +5,13 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Manager Resgistration') }}</div>
+                    <div class="card-header">{{ __('Manager Registration') }}</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('man.register') }}">
                             @csrf
 
+                            <input type="hidden" value="{{$venue->id}}" name="venue_id">
                             <input type="hidden" value="manager" name="user_type">
 
                             <div class="form-group row">

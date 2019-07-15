@@ -65,7 +65,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                                        <a class="dropdown-item" href="{{ route('manager.register') }}">{{ __('Manager Register') }}</a>
+                                        {{--<a class="dropdown-item" href="{{ route('manager.register') }}">{{ __('Manager Register') }}</a>--}}
 
                                         <a class="dropdown-item" href="{{ route('employer.register') }}">{{ __('Employer Register') }}</a>
 

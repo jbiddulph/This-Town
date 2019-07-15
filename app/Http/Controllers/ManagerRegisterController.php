@@ -23,4 +23,22 @@ class ManagerRegisterController extends Controller
         ]);
         return redirect()->to('login');
     }
+
+
+    public function managerRegister1($id){
+
+        $venue = Venue::findOrFail($id);
+        return view('auth.manager-register', compact('venue'));
+    }
 }
+
+//$venue = Venue::findOrFail($id);
+//$user = User::create([
+//    'email' => request('email'),
+//    'user_type' => request('user_type'),
+//    'password' => Hash::make(request('password')),
+//]);
+//DB::table('venues')
+//    ->where('venue_id', $venue->id)
+//    ->update(['user_id' => $user->id]);
+//return view('auth.manager-register', compact('venue'));
