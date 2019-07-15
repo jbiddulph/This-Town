@@ -70,8 +70,8 @@ Route::post('employer/register', 'EmployerRegisterController@employerRegister')-
 
 //Venue view
 Route::view('manager/register', 'auth.manager-register')->name('manager.register');
-Route::get('manager/register/{id}', 'ManagerRegisterController@managerRegister1')->name('man.register');
-Route::post('manager/register', 'ManagerRegisterController@managerRegister1')->name('man.register');
+Route::get('manager/register/{venue}', 'ManagerRegisterController@managerRegister1')->name('man.register');
+Route::post('manager/register/{venue}', 'ManagerRegisterController@managerRegister2')->name('man.register2');
 
 //Applications and interests
 Route::post('applications/{id}', 'JobController@apply')->name('apply');

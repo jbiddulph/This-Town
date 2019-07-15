@@ -25,9 +25,9 @@ class ManagerRegisterController extends Controller
     }
 
 
-    public function managerRegister1($id, Venue $venue){
+    public function managerRegister1(Venue $venue){
 
-        return view('auth.manager-register', compact($id, $venue));
+        return view('auth.manager-register', compact($venue));
     }
 
 }

@@ -17,7 +17,7 @@
                     @endif
                 </div>
             </div>
-            <a href="{{ route('man.register', ['id' => $venue->id])}}"> <button class="btn btn-success btn-sm">Claim Venue</button></a>
+            <a href="{{ route('man.register', ['venue' => $venue])}}"> <button class="btn btn-success btn-sm">Claim Venue</button></a>
             <table class="table">
                 <thead>
                 <th>Logo</th>

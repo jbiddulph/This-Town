@@ -8,10 +8,10 @@
                     <div class="card-header">{{ __('Manager Registration') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('man.register') }}">
+                        <form method="POST" action="{{ route('man.register2') }}">
                             @csrf
 
-                            <input type="hidden" value="{{$id}}" name="venue_id">
+                            <input type="hidden" value="{{$venue->id}}" name="venueID">
                             <input type="hidden" value="manager" name="user_type">
 
                             <div class="form-group row">
