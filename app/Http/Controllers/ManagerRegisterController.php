@@ -25,11 +25,11 @@ class ManagerRegisterController extends Controller
     }
 
 
-    public function managerRegister1($id){
+    public function managerRegister1($id, Venue $venue){
 
-        $venue = Venue::findOrFail($id);
-        return view('auth.manager-register', compact('venue'));
+        return view('auth.manager-register', compact($id, $venue));
     }
+
 }
 
 //$venue = Venue::findOrFail($id);

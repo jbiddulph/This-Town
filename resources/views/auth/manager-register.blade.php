@@ -11,7 +11,7 @@
                         <form method="POST" action="{{ route('man.register') }}">
                             @csrf
 
-                            <input type="hidden" value="{{$venue->id}}" name="venue_id">
+                            <input type="hidden" value="{{$id}}" name="venue_id">
                             <input type="hidden" value="manager" name="user_type">
 
                             <div class="form-group row">
