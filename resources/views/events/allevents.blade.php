@@ -10,11 +10,11 @@
                         <input type="text" name="title" class="form-control">&nbsp;&nbsp;&nbsp;
                     </div>
                     <div class="form-group">
-                        <label for="Keyword">Employment type&nbsp;</label>
+                        <label for="Keyword">Event type&nbsp;</label>
                         <select name="type" class="form-control">
                             <option value="">-select-</option>
-                            <option value="fulltime">Full Time</option>
-                            <option value="parttime">Part Time</option>
+                            <option value="livemusic">Live music</option>
+                            <option value="outdoor">Outdoor Festival</option>
                             <option value="casual">Casual</option>
                         </select>
                         &nbsp;&nbsp;
@@ -29,8 +29,13 @@
                         </select>&nbsp;&nbsp;&nbsp;
                     </div>
                     <div class="form-group">
-                        <label for="Address">Address&nbsp;</label>
-                        <input type="text" name="address" class="form-control">&nbsp;&nbsp;&nbsp;
+                        <label for="venue">Venue&nbsp;</label>
+                        <select name="venue_id" class="form-control">
+                            <option value="">-select-</option>
+                            @foreach(App\Venue::all() as $venue)
+                                <option value="{{$venue->id}}">{{$venue->vname}}</option>
+                            @endforeach
+                        </select>&nbsp;&nbsp;&nbsp;
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-outline-success">Search</button>

@@ -87,17 +87,27 @@ class JobController extends Controller
         $category = $request->get('category_id');
         $address = $request->get('address');
 
-        if($keyword||$type||$category||$address){
-            $jobs = Job::where('title','LIKE','%'.$keyword.'%')
-                ->orWhere('type',$type)
-                ->orWhere('category_id',$category)
-                ->orWhere('address',$address)
-                ->paginate(10);
-            return view('jobs.alljobs',compact('jobs'));
-        } else {
-            //        $keyword = request('title');
-            $jobs = Job::latest()->paginate(10);
-            return view('jobs.alljobs',compact('jobs'));
+
+        $jobs = Job::query();
+
+        if ($keyword) {
+            $jobs = $jobs->where('title','LIKE','%'.$keyword.'%');
         }
+
+        if ($type) {
+            $jobs = $jobs->where('type',$type);
+        }
+
+        if ($category) {
+            $jobs = $jobs->where('category_id',$category);
+        }
+
+        if ($address) {
+            $jobs = $jobs->where('address',$address);
+        }
+
+        $jobs = $jobs->paginate(10);
+        return view('jobs.alljobs',compact('jobs'));
+
     }
 }

@@ -95,7 +95,7 @@ $factory->define(App\Event::class, function (Faker $faker) {
         'event_starttime' => $faker->time(),
         'event_price' => $faker->word,
         'eventcategory_id' => rand(1,5),
-        'type' => 'indie',
+        'type' => 'livemusic',
         'status' => rand(0,1),
         'description' => $faker->paragraph(rand(2,10)),
         'last_date' => $faker->dateTime

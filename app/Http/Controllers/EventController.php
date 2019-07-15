@@ -117,8 +117,32 @@ class EventController extends Controller
         $eventID->users()->attach(Auth::user()->id, ['status' => $request->status]);
         return redirect()->back()->with('message','Shown Interest!');
     }
-    public function allEvents() {
-        $events = Event::latest()->paginate(10);
+    public function allEvents(Request $request) {
+        $keyword = $request->get('title');
+        $type = $request->get('type');
+        $category = $request->get('eventcategory_id');
+        $venue_id = $request->get('venue_id');
+
+
+        $events = Event::query();
+
+        if ($keyword) {
+            $events = $events->where('title','LIKE','%'.$keyword.'%');
+        }
+
+        if ($type) {
+            $events = $events->where('type',$type);
+        }
+
+        if ($category) {
+            $events = $events->where('eventcategory_id',$category);
+        }
+
+        if ($venue_id) {
+            $events = $events->where('venue_id',$venue_id);
+        }
+
+        $events = $events->paginate(10);
         return view('events.allevents',compact('events'));
     }
 }
