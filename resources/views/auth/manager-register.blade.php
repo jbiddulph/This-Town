@@ -8,6 +8,11 @@
                     <div class="card-header">{{ __('Manager Registration') }}</div>
 
                     <div class="card-body">
+
+                        @if(1 != $venue->user_id)
+                            <h2>Venue already claimed!</h2>
+                        @else
+
                         <form method="POST" action="{{ route('man.register.post', $venue) }}">
                             @csrf
 
@@ -86,6 +91,7 @@
                                 </div>
                             </div>
                         </form>
+                        @endif
                     </div>
                 </div>
             </div>

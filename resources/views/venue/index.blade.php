@@ -17,7 +17,13 @@
                     @endif
                 </div>
             </div>
-            <a href="{{ route('man.register', ['venue' => $venue])}}"> <button class="btn btn-success btn-sm">Claim Venue</button></a>
+            <div class="claim-venue">
+                @if(1 != $venue->user_id)
+                    <a href="{{ route('man.register', ['venue' => $venue])}}"> <button class="btn btn-danger btn-sm" disabled>Venue Claimed</button></a>
+                @else
+                    <a href="{{ route('man.register', ['venue' => $venue])}}"> <button class="btn btn-success btn-sm">Claim Venue</button></a>
+                @endif
+            </div>
             <table class="table">
                 <thead>
                 <th>Logo</th>
