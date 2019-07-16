@@ -2,9 +2,12 @@
 
 @section('content')
     @if(empty($venue->cover_photo))
-        <img src="{{asset('avatar/avatar-icon.png')}}" width="80" />
+        <div class="header-image">
+            <img src="{{asset('avatar/avatar-icon.png')}}" width="80" />
+        </div>
     @else
-        <img src="{{asset('uploads/coverphoto')}}/{{$venue->cover_photo}}" style="width:100%;" />
+        <div class="header-image">&nbsp;
+        </div>
     @endif
     <div class="container">
         <div class="col-md-12">
@@ -19,7 +22,7 @@
             </div>
             <div class="claim-venue">
                 @if(1 != $venue->user_id)
-                    <a href="{{ route('man.register', ['venue' => $venue])}}"> <button class="btn btn-danger btn-sm" disabled>Venue Claimed</button></a>
+                    <a href="{{ route('man.register', ['venue' => $venue])}}"> <button class="btn btn-outline-danger btn-sm" disabled>Venue Claimed</button></a>
                 @else
                     <a href="{{ route('man.register', ['venue' => $venue])}}"> <button class="btn btn-success btn-sm">Claim Venue</button></a>
                 @endif
@@ -48,5 +51,14 @@
             </table>
         </div>
     </div>
+<style>
+.header-image {
+    margin-top: -2rem;
+    background-image: url({{asset('uploads/coverphoto')}}/{{$venue->cover_photo}});
+    height: 420px;
+    background-repeat: no-repeat;
+    background-size: cover;
+ }
+</style>
 @endsection
 

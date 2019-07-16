@@ -50,20 +50,20 @@ $factory->define(App\Company::class, function (Faker $faker) {
 $factory->define(App\Venue::class, function (Faker $faker) {
     return [
         'user_id' => App\User::all()->random()->id,
-        'vname' => $name=$faker->company,
-        'slug' => str_slug($name),
-        'address' => $faker->streetAddress,
-        'town' => $faker->streetName,
-        'county' => $faker->country,
-        'postcode' => $faker->postcode,
-        'phone' => $faker->phoneNumber,
-        'website' => $faker->domainName,
+//        'vname' => $name=$faker->company,
+//        'slug' => str_slug($name),
+//        'address' => $faker->streetAddress,
+//        'town' => $faker->streetName,
+//        'county' => $faker->country,
+//        'postcode' => $faker->postcode,
+//        'phone' => $faker->phoneNumber,
+//        'website' => $faker->domainName,
         'logo' => 'avatar-icon.png',
-        'cover_photo' => 'tumblr-image-sizes-banner.png',
+        'cover_photo' => $faker->randomElement(['header1.png','header2.png','header3.jpg']),
         'slogan' => 'learn, earn and grow',
-        'description' => $faker->paragraph(rand(2,10)),
-        'latitude' => $faker->latitude,
-        'longitude' => $faker->longitude
+//        'description' => $faker->paragraph(rand(2,10)),
+//        'latitude' => $faker->latitude,
+//        'longitude' => $faker->longitude
     ];
 });
 
@@ -87,7 +87,7 @@ $factory->define(App\Job::class, function (Faker $faker) {
 $factory->define(App\Event::class, function (Faker $faker) {
     return [
         'user_id' => App\User::all()->random()->id,
-        'venue_id' => App\Company::all()->random()->id,
+        'venue_id' => App\Venue::all()->random()->id,
         'title' => $title=$faker->text,
         'slug' => str_slug($title),
         'event_startdate' => $faker->dateTime(),
