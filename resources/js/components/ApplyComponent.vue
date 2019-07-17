@@ -1,8 +1,8 @@
 <template>
     <div>
-        xxx
         <form @submit="formSubmit">
-            <button v-if="show" type="submit" class="btn btn-success" style="width: 100%;">Apply</button>xx
+            <button v-if="show" type="submit" class="btn btn-success"
+                    style="width: 100%;">Apply</button>
         </form>
     </div>
 </template>
