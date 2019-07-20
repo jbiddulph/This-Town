@@ -13,7 +13,8 @@ class VenueController extends Controller
     }
 
     public function index($id, Venue $venue) {
-        return view('venue.index',compact('venue'));
+        $venuelist = Venue::distinct()->orderBy('town', 'ASC')->get('town');
+        return view('venue.index',compact('venue', 'venuelist'));
     }
 
     public function create() {

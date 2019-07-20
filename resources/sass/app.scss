@@ -8,3 +8,16 @@
 @import '~bootstrap/scss/bootstrap';
 
 li { list-style-type: none; }
+
+//body { background: #1b1e21; }
+nav form {
+  -webkit-margin-after: 0em !important;
+  margin-block-end: 0em !important;
+  /* height: auto; */
+  display: flex;
+}
+nav form select.form-control {
+  border: none;
+  background-color: #f7f7f7;
+  font-size: initial;
+}

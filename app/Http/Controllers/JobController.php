@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Venue;
 use Illuminate\Http\Request;
 use App\Job;
 use App\Company;

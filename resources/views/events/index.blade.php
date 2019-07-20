@@ -27,6 +27,7 @@
                 </tbody>
             </table>
 
+
         </div>
         <div>
             <a href="{{route('allevents')}}"><button class="btn btn-success btn-lg" style="width:100%;">Browse all events</button></a>
@@ -49,7 +50,8 @@
                         </div>
                     </div>
                 </div>
-            @endforeach;
+            @endforeach
+                {{$venues->appends(Illuminate\Support\Facades\Input::except('page'))->links()}}
         </div>
     </div>
 @endsection

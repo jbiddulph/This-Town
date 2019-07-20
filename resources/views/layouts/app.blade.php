@@ -9,17 +9,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script type="text/javascript" src="/js/app.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script   defer src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-        $( function() {
-            $( ".datepicker" ).datepicker({
-                dateFormat: "yy-mm-dd"
-            });
-        } );
-    </script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -36,8 +26,20 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Visit Worthing
+                <div class="navbar-brand" href="{{ url('/') }}">
+                    Visit</div>
+                <form action="{{route('alljobs')}}" method="GET">
+
+
+                        <select name="category_id" class="form-control">
+                            <option value="">-select-</option>
+                            @foreach($venuelist as $venue)
+                                <option value="{{$venue->town}}">{{$venue->town}}</option>
+                            @endforeach
+                        </select>&nbsp;&nbsp;&nbsp;
+
+                </form>
+
 {{--                    {{ config('app.name', 'Visit Worthing') }}--}}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -141,6 +143,18 @@
         <main class="py-4">
             @yield('content')
         </main>
+    {{--<script type="text/javascript" src="{{mix('js/app.js')}}"></script>--}}
     </div>
+    <!-- Scripts -->
+    <script defer src="{{ asset('js/app.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script   defer src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( ".datepicker" ).datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+        } );
+    </script>
 </body>
 </html>
