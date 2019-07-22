@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<div id="app">
     <div class="container">
         <div class="row">
             <div class="col-md-8">
@@ -38,13 +38,13 @@
                 <br/>
                 @if(Auth::check()&&Auth::user()->user_type=='seeker')
                     @if(!$job->checkApplication())
-                        <apply-component></apply-component>
-                    @else
-                        <button class="btn btn-success" disabled style="width: 100%;">Already applied</button>
+                    <apply-component jobid="{{$job->id}}"></apply-component>
                     @endif
+                <br />
+                    <favouritejob-component jobid="{{$job->id}}" :favorited="{{$job->checkSavedjob()?'true':'false'}}"></favouritejob-component>
                 @endif
             </div>
         </div>
     </div>
-
+</div>
 @endsection

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div id="app">
     <div class="container">
         <div class="row">
             <div class="col-md-8">
@@ -60,9 +61,12 @@
                             @endif
                         </span>
                         @endif
+
+                        <favouriteevent-component eventid="{{$event->id}}" :favorited="{{$event->checkSavedevent()?'true':'false'}}"></favouriteevent-component>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 @endsection

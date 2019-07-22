@@ -145,6 +145,8 @@ class EventController extends Controller
         }
 
         $events = $events->paginate(10);
+
+
         return view('events.allevents',compact('events'));
     }
 }

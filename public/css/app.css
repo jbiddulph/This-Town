@@ -10661,3 +10661,11 @@ nav form select.form-control {
   font-size: initial;
 }
 
+h1.venue-title {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: inline-flex;
+  padding: 10px 20px;
+}
+
