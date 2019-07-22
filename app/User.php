@@ -50,4 +50,12 @@ class User extends Authenticatable
     public function venue() {
         return $this->hasOne(Venue::class);
     }
+    public function favouritejobs() {
+        return $this->belongsToMany(Job::class, 'favourites','user_id','job_id')
+            ->withTimeStamps();
+    }
+    public function favouriteevents() {
+        return $this->belongsToMany(Event::class, 'favevents','user_id','event_id')
+            ->withTimeStamps();
+    }
 }
