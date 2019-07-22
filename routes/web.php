@@ -11,8 +11,12 @@
 |
 */
 
+Route::get('/', 'HomeController@index');
+
+Route::get('/town', 'HomeController@main')->name('main');
+
 //Jobs
-Route::get('/', 'JobController@index');
+Route::get('jobs', 'JobController@index');
 Route::get('jobs/create', 'JobController@create')->name('job.create');
 Route::post('jobs/create', 'JobController@store')->name('job.store');
 Route::get('jobs/{id}/edit', 'JobController@edit')->name('job.edit');
@@ -80,3 +84,12 @@ Route::post('manager/register/{venue}', 'ManagerRegisterController@managerRegist
 Route::post('applications/{id}', 'JobController@apply')->name('apply');
 Route::post('interest/{id}', 'EventController@showInterest')->name('showInterest');
 Route::post('attending/{id}', 'EventController@checkAttending')->name('checkAttending');
+
+
+//Save unsave jobs
+Route::post('/savejob/{id}', 'FavouritejobController@saveJob');
+Route::post('/unsavejob/{id}', 'FavouritejobController@unSaveJob');
+
+//Save unsave events
+Route::post('/saveevent/{id}', 'FavouriteeventController@saveEvent');
+Route::post('/unsaveevent/{id}', 'FavouriteeventController@unSaveEvent');

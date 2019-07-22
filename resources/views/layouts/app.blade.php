@@ -9,17 +9,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script type="text/javascript" src="/js/app.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script   defer src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-        $( function() {
-            $( ".datepicker" ).datepicker({
-                dateFormat: "yy-mm-dd"
-            });
-        } );
-    </script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -32,14 +22,27 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/solid.css" integrity="sha384-ypqxM+6jj5ropInEPawU1UEhbuOuBkkz59KyIbbsTu4Sw62PfV3KUnQadMbIoAzq" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/fontawesome.css" integrity="sha384-NnhYAEceBbm5rQuNvCv6o4iIoPZlkaWfvuXVh4XkRNvHWKgu/Mk2nEjFZpPQdwiz" crossorigin="anonymous">
 </head>
-<body>
-    <div id="app">
+<div>
+    <div>
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Visit Worthing
+                <div class="navbar-brand" href="{{ url('/') }}">
+                    Visit</div>
+                {{--<form action="{{route('main'), [$venue->town]}}" method="POST">@csrf--}}
+                <form action="/town" id="town-select" class="town-select" method="GET">@csrf
+
+                        <select name="town" class="form-control">
+                            <option value="">-select-</option>
+                            @foreach($venuelist as $venue)
+                                {{--<option value="{{$venue->town}}" @if($town === $venue->town) selected @endif>{{$venue->town}}</option>--}}
+                                <option value="{{$venue->town}}">{{$venue->town}}</option>
+                            @endforeach
+                        </select>
+
+                </form>
+
 {{--                    {{ config('app.name', 'Visit Worthing') }}--}}
-                </a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -47,7 +50,7 @@
                 <li class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a class="nav-link" href="{{url('/')}}">Jobs</a> </li>
+                        <li class="nav-item"><a class="nav-link" href="{{url('/jobs')}}">Jobs</a> </li>
                         <li class="nav-item"><a class="nav-link" href="{{url('/events')}}">Events</a> </li>
                     </ul>
 
@@ -141,6 +144,27 @@
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
+    {{--<script type="text/javascript" src="{{mix('js/app.js')}}"></script>--}}
+</div>
+<!-- Scripts -->
+<script defer src="{{ asset('js/app.js') }}"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script   defer src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $( function() {
+        $( ".datepicker" ).datepicker({
+            dateFormat: "yy-mm-dd"
+        });
+    } );
+
+
+        $(function () {
+            $(".town-select").change(function() {
+                console && console.log('ss');
+                $("#town-select").submit();
+            });
+        });
+
+</script>
 </body>
 </html>

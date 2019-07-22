@@ -7,6 +7,13 @@
         </div>
     @else
         <div class="header-image">&nbsp;
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="venue-title">{{$venue->vname}}</h1>
+                    </div>
+                </div>
+            </div>
         </div>
     @endif
     <div class="container">
@@ -19,6 +26,10 @@
                         <img src="{{asset('uploads/logo')}}/{{$venue->logo}}" style="width: 100px" alt="">
                     @endif
                 </div>
+
+                <h2>{{$venue->address}} {{$venue->address2}}, {{$venue->town}}, {{$venue->county}}</h2>
+                <h3>{{$venue->postcode}}</h3>
+                <h4>{{$venue->website}}</h4>
             </div>
             <div class="claim-venue">
                 @if(1 != $venue->user_id)
@@ -53,11 +64,19 @@
     </div>
 <style>
 .header-image {
-    margin-top: -2rem;
+    margin-top: -1.5rem;
     background-image: url({{asset('uploads/coverphoto')}}/{{$venue->cover_photo}});
     height: 420px;
     background-repeat: no-repeat;
     background-size: cover;
+
+
+    content: "";
+    display: block;
+
+    width: 100%;
+    z-index: -2;
+    opacity: 0.8;
  }
 </style>
 @endsection

@@ -27,4 +27,12 @@ class Event extends Model
         return \DB::table('event_user')->where('user_id',auth()->user()->id)->where('status','Attending')->where
         ('event_id',$this->id)->exists();
     }
+    public function favouriteevents() {
+        return $this->belongsToMany(Event::class, 'favevents','event_id','user_id')
+            ->withTimeStamps();
+    }
+    public function checkSavedevent() {
+        return \DB::table('favevents')->where('user_id',auth()->user()->id)->where
+        ('event_id',$this->id)->exists();
+    }
 }
