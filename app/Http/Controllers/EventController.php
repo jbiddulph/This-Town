@@ -19,7 +19,7 @@ class EventController extends Controller
 
     public function index() {
         $events = Event::latest()->limit(10)->where('status',1)->get();
-        $town = 'Brighton';
+        $town = request('town');
         $venues = Venue::latest()->where('town',$town)->paginate(24);
 
         return view('events.index', compact('events','venues'));

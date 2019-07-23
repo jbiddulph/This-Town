@@ -34,8 +34,7 @@
                         <select name="town" class="form-control">
                             <option value="">-select-</option>
                             @foreach($venuelist as $venue)
-                                {{--<option value="{{$venue->town}}" @if($town === $venue->town) selected @endif>{{$venue->town}}</option>--}}
-                                <option value="{{$venue->town}}">{{$venue->town}}</option>
+                                <option value="{{$venue->town}}" {{ request('town') === $venue->town ? 'selected' : '' }}>{{$venue->town}}</option>
                             @endforeach
                         </select>
 
@@ -50,8 +49,8 @@
                 <li class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a class="nav-link" href="{{url('/jobs')}}">Jobs</a> </li>
-                        <li class="nav-item"><a class="nav-link" href="{{url('/events')}}">Events</a> </li>
+                        <li class="nav-item"><a class="nav-link" href="{{url(request('town'))}}/jobs">Jobs</a> </li>
+                        <li class="nav-item"><a class="nav-link" href="{{url(request('town'))}}/events">Events</a> </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -122,6 +121,9 @@
                                     @else
                                         <a class="dropdown-item" href="{{ route('profile.view') }}">
                                             {{ __('Profile') }}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('home') }}">
+                                            {{ __('Favourites') }}
                                         </a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
