@@ -29,11 +29,11 @@ class HomeController extends Controller
         return view('home', compact('jobs', 'events'));
     }
 
-    public function main(Request $request)
+    public function main($town)
     {
-$town = $request->input('town');
-//        return  print_r($request->input('town'), true);
-//        $town = $request['town'];
-        return view('main', compact('town'));
+//$town = $request->input('town');
+
+//        return view('main', compact('town'));
+        return view('main')->with('town', $town);
     }
 }

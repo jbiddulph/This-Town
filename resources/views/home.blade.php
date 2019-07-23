@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
+            @if(Auth::user()->user_type==='seeker')
             <h2>Favourite Jobs</h2>
             @foreach($jobs as $job)
             <div class="card">
@@ -34,6 +35,7 @@
                     </div>
                 </div>
             @endforeach
+                @endif
         </div>
     </div>
 </div>
