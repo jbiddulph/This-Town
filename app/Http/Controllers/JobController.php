@@ -20,6 +20,7 @@ class JobController extends Controller
     public function index() {
         $jobs = Job::latest()->limit(10)->where('status',1)->get();
         $companies = Company::get()->random(12);
+        $town = request('town');
         return view('welcome', compact('jobs','companies'));
     }
 
@@ -82,13 +83,13 @@ class JobController extends Controller
         return view('jobs.applicants',compact('applicants'));
     }
 
-    public function allJobs(Request $request) {
+    public function allJobs(Request $request, $town) {
         $keyword = $request->get('title');
         $type = $request->get('type');
         $category = $request->get('category_id');
         $address = $request->get('address');
 
-
+        $town = request('town');
         $jobs = Job::query();
 
         if ($keyword) {
@@ -108,7 +109,7 @@ class JobController extends Controller
         }
 
         $jobs = $jobs->paginate(10);
-        return view('jobs.alljobs',compact('jobs'));
+        return view('jobs.alljobs',compact('jobs', $town));
 
     }
 }

@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <form action="{{route('alljobs')}}" method="GET">
+            <form action="{{url(request('town').'/jobs/alljobs')}}" method="GET">
             <div class="form-inline">
                 <div class="form-group">
                     <label for="Keyword">Keyword&nbsp;</label>
@@ -37,7 +37,7 @@
                 </div>
             </div>
             </form>
-            <h1>All Jobs</h1>
+            <h1>All Jobs in {{request('town')}}</h1>
             <table class="table">
                 <thead>
                 <th>Logo</th>

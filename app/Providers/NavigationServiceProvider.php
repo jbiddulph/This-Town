@@ -25,8 +25,12 @@ class NavigationServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+//        view()->composer('*', function ($view){
+//            $towns = Venue::distinct()->orderBy('town', 'ASC')->get('town');
+//            return $view->with('venuelist', $towns);
+//        });
         view()->composer('*', function ($view){
-            $towns = Venue::distinct()->orderBy('town', 'ASC')->get('town');
+            $towns = Venue::distinct()->orderBy('town', 'ASC')->pluck('town');
             return $view->with('venuelist', $towns);
         });
     }

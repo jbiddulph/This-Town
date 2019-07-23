@@ -30,12 +30,9 @@
                     </div>
                     <div class="form-group">
                         <label for="venue">Venue&nbsp;</label>
-                        {{--$town = 'Brighton’; //selected town--}}
-                        {{--$venues = Venue::latest()->where('town',$town)->get();--}}
-
                         <select name="venue_id" class="form-control">
                             <option value="">-select-</option>
-                            @foreach(App\Venue::where('town','brighton')->get() as $venue)
+                            @foreach(App\Venue::where('town',request('town'))->get() as $venue)
                                 <option value="{{$venue->id}}">{{$venue->vname}}</option>
                             @endforeach
                         </select>&nbsp;&nbsp;&nbsp;
@@ -45,7 +42,7 @@
                     </div>
                 </div>
             </form>
-            <h1>All Events</h1>
+            <h1>All Events in {{request('town')}}</h1>
             <table class="table">
                 <thead>
                 <th>Logo</th>

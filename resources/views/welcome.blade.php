@@ -4,7 +4,7 @@
 
     <div class="container">
         <div class="row">
-            <h1>Recent Jobs</h1>
+            <h1>Recent {{request('town')}} Jobs</h1>
             <table class="table">
                 <thead>
                     <th>Logo</th>
@@ -29,7 +29,7 @@
             </table>
         </div>
         <div>
-            <a href="{{route('alljobs')}}"><button class="btn btn-success btn-lg" style="width:100%;">Browse all jobs</button></a>
+            <a href="{{url(request('town').'/jobs/alljobs')}}"><button class="btn btn-success btn-lg" style="width:100%;">Browse all jobs</button></a>
         </div>
         <br/>
         <br/>

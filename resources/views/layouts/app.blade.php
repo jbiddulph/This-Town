@@ -9,7 +9,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -22,20 +22,25 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/solid.css" integrity="sha384-ypqxM+6jj5ropInEPawU1UEhbuOuBkkz59KyIbbsTu4Sw62PfV3KUnQadMbIoAzq" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/fontawesome.css" integrity="sha384-NnhYAEceBbm5rQuNvCv6o4iIoPZlkaWfvuXVh4XkRNvHWKgu/Mk2nEjFZpPQdwiz" crossorigin="anonymous">
 </head>
+
 <div>
     <div>
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <div class="navbar-brand" href="{{ url('/') }}">
                     Visit</div>
                 {{--<form action="{{route('main'), [$venue->town]}}" method="POST">@csrf--}}
-                <form action="/town" id="town-select" class="town-select" method="GET">@csrf
+                <form action="/town/town" id="town-select" class="town-select" method="GET">@csrf
 
                         <select name="town" class="form-control">
                             <option value="">-select-</option>
-                            @foreach($venuelist as $venue)
-                                <option value="{{$venue->town}}" {{ request('town') === $venue->town ? 'selected' : '' }}>{{$venue->town}}</option>
+                            @foreach($venuelist as $town)
+                                <option value="{{$town}}" {{ request('town') === $town ? 'selected' : '' }}>{{$town}}</option>
                             @endforeach
+
+{{--                            @foreach($venuelist as $venue)--}}
+{{--                                <option value="{{$venue->town}}" {{ request('town') === $venue->town ? 'selected' : '' }}>{{$venue->town}}</option>--}}
+{{--                            @endforeach--}}
                         </select>
 
                 </form>
@@ -49,8 +54,8 @@
                 <li class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a class="nav-link" href="{{url(request('town'))}}/jobs">Jobs</a> </li>
-                        <li class="nav-item"><a class="nav-link" href="{{url(request('town'))}}/events">Events</a> </li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom" href="{{url(request('town').'/jobs')}}">Jobs</a> </li>
+                        <li class="nav-item"><a class="nav-link" href="{{url(request('town').'/events')}}">Events</a> </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -158,11 +163,10 @@
             dateFormat: "yy-mm-dd"
         });
     } );
-
+    $('#navbarSupportedContent').tooltip('show')
 
         $(function () {
             $(".town-select").change(function() {
-                console && console.log('ss');
                 $("#town-select").submit();
             });
         });

@@ -30,7 +30,7 @@
 
         </div>
         <div>
-            <a href="{{route('allevents')}}"><button class="btn btn-success btn-lg" style="width:100%;">Browse all events</button></a>
+            <a href="{{url(request('town').'/events/allevents')}}"><button class="btn btn-success btn-lg" style="width:100%;">Browse all events</button></a>
         </div>
         <br/>
         <br/>
