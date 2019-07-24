@@ -30,7 +30,7 @@
 
         </div>
         <div>
-            <a href="{{route('allevents')}}"><button class="btn btn-success btn-lg" style="width:100%;">Browse all events</button></a>
+            <a href="{{url(request('town').'/events/allevents')}}"><button class="btn btn-success btn-lg" style="width:100%;">Browse all events</button></a>
         </div>
         <br/>
         <br/>
@@ -40,9 +40,19 @@
         <div class="row">
 
             @foreach($venues as $venue)
-                <div class="col-md-3">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{asset('uploads/logo')}}/{{$venue->logo}}" width="80" />
+                <div class="col-md-3 venue-box">
+                    <div class="card">
+                        <div class="row">
+                        <div class="col-sm-4">
+                            <img src="{{asset('uploads/logo')}}/{{$venue->logo}}" width="80" />
+                        </div>
+                        <div class="col-sm-8">
+                            <br />
+                            {{$venue->address}}<br />
+                            {{$venue->town}}<br />
+                            {{$venue->region}}
+                        </div>
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title">{{str_limit($venue->vname,23)}}</h5>
                             <p class="card-text">{{str_limit($venue->description,20)}}</p>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Venue;
 use Illuminate\Http\Request;
 
@@ -13,8 +14,8 @@ class VenueController extends Controller
     }
 
     public function index($id, Venue $venue) {
-//        $venuelist = Venue::distinct()->orderBy('town', 'ASC')->get('town');
-        return view('venue.index',compact('venue'));
+            $venueid = Venue::findOrFail($id);
+        return view('venue.index',compact('venueid','id','venue'));
     }
 
     public function create() {

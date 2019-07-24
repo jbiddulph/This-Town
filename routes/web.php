@@ -13,8 +13,8 @@
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/{town}', 'HomeController@main')->name('main');
-//Route::get('/town', 'HomeController@main')->name('main');
+Route::get('/town/{town}', 'HomeController@main');
+
 //Jobs
 Route::get('{town}/jobs', 'JobController@index');
 Route::get('jobs/create', 'JobController@create')->name('job.create');
@@ -23,7 +23,7 @@ Route::get('jobs/{id}/edit', 'JobController@edit')->name('job.edit');
 Route::post('jobs/{id}/edit', 'JobController@update')->name('job.update');
 Route::get('jobs/my-jobs', 'JobController@myjob')->name('my.job');
 Route::get('jobs/applications', 'JobController@applicant')->name('applicant');
-Route::get('jobs/alljobs', 'JobController@allJobs')->name('alljobs');
+Route::get('{town}/jobs/alljobs', 'JobController@allJobs')->name('alljobs');
 
 //Events
 Route::get('{town}/events', 'EventController@index');
@@ -32,7 +32,7 @@ Route::post('events/create', 'EventController@store')->name('event.store');
 Route::get('events/{id}/edit', 'EventController@edit')->name('event.edit');
 Route::post('events/{id}/edit', 'EventController@update')->name('event.update');
 Route::get('events/my-events', 'EventController@myevent')->name('my.event');
-Route::get('events/allevents', 'EventController@allEvents')->name('allevents');
+Route::get('{town}/events/allevents', 'EventController@allEvents')->name('allevents');
 
 Route::get('events/interest-attending', 'EventController@interestsAttending')->name('intatt');
 Route::get('events/interests', 'EventController@showInterests')->name('interests');

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-6">
             @if(Auth::user()->user_type==='seeker')
             <h2>Favourite Jobs</h2>
             @foreach($jobs as $job)
@@ -20,6 +20,10 @@
                 </div>
             </div>
             @endforeach
+        </div>
+
+        <div class="col-md-6">
+
             <h2>Favourite Events</h2>
             @foreach($events as $event)
                 <div class="card">
