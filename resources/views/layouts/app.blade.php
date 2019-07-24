@@ -9,7 +9,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -53,8 +53,8 @@
 
                 <li class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom" href="{{url(request('town').'/jobs')}}">Jobs</a> </li>
+                    <ul class="navbar-nav mr-auto main-links">
+                        <li class="nav-item"><a class="nav-link" href="{{url(request('town').'/jobs')}}">Jobs</a> </li>
                         <li class="nav-item"><a class="nav-link" href="{{url(request('town').'/events')}}">Events</a> </li>
                     </ul>
 
@@ -147,7 +147,7 @@
                 </div>
             </div>
         </nav>
-
+    <input type="hidden" value="{{request('town')}}" class="requestedtown">
         <main class="py-4">
             @yield('content')
         </main>
@@ -163,13 +163,18 @@
             dateFormat: "yy-mm-dd"
         });
     } );
-    $('#navbarSupportedContent').tooltip('show')
+
 
         $(function () {
             $(".town-select").change(function() {
                 $("#town-select").submit();
             });
         });
+    if($('.requestedtown').val() != ''){
+        $("ul.main-links").show();
+    } else {
+        $("ul.main-links").hide();
+    }
 
 </script>
 </body>

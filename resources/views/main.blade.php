@@ -6,7 +6,7 @@
         <div class="col-md-8">
 {{--            <div class="card">--}}
 {{--                <div class="card-header">Dashboard</div>--}}
-                    <h1>{{request('town')}}</h1>
+                    <h1 class="requested_town">{{request('town')}}</h1>
 {{--                <div class="card-body">--}}
 {{--                    @if (session('status'))--}}
 {{--                        <div class="alert alert-success" role="alert">--}}
