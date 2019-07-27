@@ -62,7 +62,9 @@
                         </span>
                         @endif
 
-                        <favouriteevent-component eventid="{{$event->id}}" :favorited="{{$event->checkSavedevent()?'true':'false'}}"></favouriteevent-component>
+                        @if(Auth::check()&&Auth::user()->user_type=='seeker')
+                            <favouriteevent-component eventid="{{$event->id}}" :favorited="{{$event->checkSavedevent()?'true':'false'}}"></favouriteevent-component>
+                        @endif
                     </div>
                 </div>
             </div>
