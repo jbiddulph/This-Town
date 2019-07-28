@@ -10725,3 +10725,31 @@ h1.venue-title {
   border-color: #b8d616;
 }
 
+.navbar-brand {
+  background-size: 100px 100px;
+  background-image: url(/images/map-marker.png?3254f8c05f6c03ff2b69230db0ab027b);
+  width: 82px;
+  height: 50px;
+}
+
+.navbar {
+  padding-bottom: 0px;
+}
+
+.bg-dark {
+  background-color: #cccccc !important;
+}
+
+.navbar a {
+  color: #333333;
+}
+
+.navbar a:hover {
+  color: #333333;
+  text-decoration: underline;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #333333;
+}
+

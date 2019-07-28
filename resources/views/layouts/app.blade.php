@@ -177,19 +177,5 @@
     }
 
 </script>
-<style>
-    .navbar-brand {
-        background-size: 100px 100px;
-        background-image: url(avatar/map-marker.png);
-        width: 82px;
-        height:50px;
-    }
-    .navbar {
-        padding-bottom: 0px;
-    }
-    .bg-dark {
-        background-color: #cccccc!important;
-    }
-</style>
 </body>
 </html>
