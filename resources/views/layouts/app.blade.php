@@ -28,7 +28,7 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <div class="navbar-brand" href="{{ url('/') }}">
-                    Visit</div>
+                    </div>
                 {{--<form action="{{route('main'), [$venue->town]}}" method="POST">@csrf--}}
                 <form action="/town/town" id="town-select" class="town-select" method="GET">@csrf
 

@@ -63,3 +63,20 @@ h1.venue-title {
   background-color: #849a0e;
   border-color: #b8d616;
 }
+.navbar-brand {
+  background-size: 100px 100px;
+  background-image: url(avatar/map-marker.png);
+  width: 82px;
+  height:50px;
+}
+.navbar {
+  padding-bottom: 0px;
+}
+.bg-dark {
+  background-color: #cccccc!important;
+}
+.navbar a { color: #333333; }
+.navbar a:hover { color: #333333; text-decoration: underline; }
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(51, 51, 51, 1);
+}
