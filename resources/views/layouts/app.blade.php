@@ -28,7 +28,7 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <div class="navbar-brand" href="{{ url('/') }}">
-                    Visit</div>
+                    </div>
                 {{--<form action="{{route('main'), [$venue->town]}}" method="POST">@csrf--}}
                 <form action="/town/town" id="town-select" class="town-select" method="GET">@csrf
 
@@ -177,5 +177,19 @@
     }
 
 </script>
+<style>
+    .navbar-brand {
+        background-size: 100px 100px;
+        background-image: url(avatar/map-marker.png);
+        width: 82px;
+        height:50px;
+    }
+    .navbar {
+        padding-bottom: 0px;
+    }
+    .bg-dark {
+        background-color: #cccccc!important;
+    }
+</style>
 </body>
 </html>
