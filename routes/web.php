@@ -93,3 +93,7 @@ Route::post('/unsavejob/{id}', 'FavouritejobController@unSaveJob');
 //Save unsave events
 Route::post('/saveevent/{id}', 'FavouriteeventController@saveEvent');
 Route::post('/unsaveevent/{id}', 'FavouriteeventController@unSaveEvent');
+
+
+//ADMIN
+Route::get('dashboard','DashboardController@index')->middleware('admin');

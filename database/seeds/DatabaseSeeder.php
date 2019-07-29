@@ -3,6 +3,8 @@
 use Illuminate\Database\Seeder;
 use App\Category;
 use App\Eventcategory;
+use App\User;
+use App\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +15,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Category::truncate();
+
         factory('App\User',20)->create();
         factory('App\Company',20)->create();
         factory('App\Job',20)->create();
@@ -43,5 +47,16 @@ class DatabaseSeeder extends Seeder
         foreach ($eventcategories as $eventcategory){
             Eventcategory::create(['name'=>$eventcategory]);
         }
+
+        Role::truncate();
+        $adminRole = Role::create(['name' => 'admin']);
+        $admin = User::create([
+                'name'=>'admin',
+                'email'=>'admin@gmail.com',
+                'password'=>bcrypt('password123'),
+                'email_varified_at'=>NOW()
+            ]);
+
+        $admin->roles()->attach($adminRole);
     }
 }

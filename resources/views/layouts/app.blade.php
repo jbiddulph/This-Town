@@ -123,13 +123,14 @@
                                             {{ __('Venue') }}
                                         </a>
                                         <a class="dropdown-item" href="{{ route('my.event') }}">My Events</a>
-                                    @else
+                                    @elseif(Auth::user()->user_type=='seeker')
                                         <a class="dropdown-item" href="{{ route('profile.view') }}">
                                             {{ __('Profile') }}
                                         </a>
                                         <a class="dropdown-item" href="{{ route('home') }}">
                                             {{ __('Favourites') }}
                                         </a>
+                                        @else
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

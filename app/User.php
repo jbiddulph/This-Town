@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Venue;
+use App\Role;
 
 class User extends Authenticatable
 {
@@ -57,5 +58,8 @@ class User extends Authenticatable
     public function favouriteevents() {
         return $this->belongsToMany(Event::class, 'favevents','user_id','event_id')
             ->withTimeStamps();
+    }
+    public function roles() {
+        return $this->belongsToMany(Role::class);
     }
 }
