@@ -14,15 +14,30 @@
                     <form action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">@csrf
                         <div class="form-group">
                             <label for="Title">Title</label>
-                            <input type="text" name="title" class="form-control">
+                            <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" value="{{old('title')}}">
+                            @error('title')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="Description">Description</label>
-                            <textarea name="content" id="" cols="30" rows="6" class="form-control"></textarea>
+                            <textarea name="content" id="" cols="30" rows="6" class="form-control @error('content') is-invalid @enderror">{{old('content')}}</textarea>
+                            @error('content')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="Image">Image</label>
-                            <input type="file" name="image" class="form-control">
+                            <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
+                            @error('image')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="Status">Status</label>
