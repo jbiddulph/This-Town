@@ -7,6 +7,7 @@ use App\Venue;
 use Illuminate\Http\Request;
 use App\Job;
 use App\Company;
+use App\Post;
 use App\Http\Requests\JobPostRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,8 +21,9 @@ class JobController extends Controller
     public function index() {
         $jobs = Job::latest()->limit(10)->where('status',1)->get();
         $companies = Company::get()->random(12);
+        $posts = Post::where('status',1)->get();
         $town = request('town');
-        return view('welcome', compact('jobs','companies'));
+        return view('welcome', compact('jobs','companies', 'posts'));
     }
 
     public function show($id, Job $job) {

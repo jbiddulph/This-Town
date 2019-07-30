@@ -102,3 +102,7 @@ Route::post('dashboard/create','DashboardController@store')->name('post.store')-
 Route::post('dashboard/destroy','DashboardController@destroy')->name('post.delete')->middleware('admin');
 Route::get('dashboard/{id}/edit','DashboardController@edit')->name('post.edit')->middleware('admin');
 Route::post('dashboard/{id}/update','DashboardController@update')->name('post.update')->middleware('admin');
+Route::get('dashboard/trash','DashboardController@trash')->middleware('admin');
+Route::get('dashboard/{id}/trash','DashboardController@restore')->name('post.restore')->middleware('admin');
+Route::get('dashboard/{id}/toggle','DashboardController@toggle')->name('post.toggle')->middleware('admin');
+Route::get('/posts/{id}/{slug}','DashboardController@show')->name('post.show');

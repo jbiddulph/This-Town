@@ -65,6 +65,7 @@
         </div>
     </div>
 @endsection
+
 <style>
     .fa, .fas {
         color: #3f9ae5;

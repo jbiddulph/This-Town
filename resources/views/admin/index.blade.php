@@ -17,6 +17,7 @@
                     <th scope="col">Image</th>
                     <th scope="col">Title</th>
                     <th scope="col">Content</th>
+                    <th scope="col">Town</th>
                     <th scope="col">Status</th>
                     <th scope="col">Date</th>
                     <th scope="col">Action</th>
@@ -28,11 +29,12 @@
                     <td><img src="{{asset('storage/'.$post->image)}}" width="80" /></td>
                     <td>{{$post->title}}</td>
                     <td>{{str_limit($post->content,20)}}</td>
+                    <td>{{$post->town}}</td>
                     <td>
                         @if($post->status == '0')
-                            <a href="" class="badge badge-primary">Draft</a>
+                            <a href="{{route('post.toggle',[$post->id])}}" class="badge badge-primary">Draft</a>
                             @else
-                            <a href="" class="badge badge-success">Live</a>
+                            <a href="{{route('post.toggle',[$post->id])}}" class="badge badge-success">Live</a>
                             @endif
                     </td>
                     <td>{{$post->created_at->diffForHumans()}}</td>
