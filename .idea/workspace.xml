@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec013c6d-202f-4d2f-a955-9eda3b748a72" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ManagerRegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ManagerRegisterController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/left-menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/left-menu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,46 +58,6 @@
         <option value="Vue Single File Component" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>alljobs</find>
-      <find>$venues</find>
-      <find>header-image</find>
-      <find>job.edit</find>
-      <find>HomeController</find>
-      <find>town-select</find>
-      <find>visit venue</find>
-      <find>Browse all events</find>
-      <find>venuelist</find>
-      <find>username</find>
-      <find>Dashboard</find>
-      <find>user</find>
-      <find>Confirm Password</find>
-      <find>login</find>
-      <find>allevents</find>
-      <find>profile</find>
-      <find>Browse all eve</find>
-      <find>$town</find>
-      <find>Brighton</find>
-      <find>keywor</find>
-      <find>town</find>
-      <find>alleve</find>
-      <find>jobs</find>
-      <find>venue</find>
-      <find>bootstrap</find>
-      <find>boot</find>
-      <find>bootstrap.js</find>
-      <find>navbar-nav</find>
-      <find>checkSavedevent</find>
-      <find>compan</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>venue</replace>
-    </replaceStrings>
-    <dirStrings>
-      <dir>$PROJECT_DIR$</dir>
-    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -267,7 +231,7 @@
       <workItem from="1564261716479" duration="5217000" />
       <workItem from="1564389837689" duration="2245000" />
       <workItem from="1564429378697" duration="6778000" />
-      <workItem from="1564439380768" duration="2326000" />
+      <workItem from="1564439380768" duration="8375000" />
     </task>
     <task id="LOCAL-00001" summary="can now view events when not logged in">
       <created>1564265813865</created>
