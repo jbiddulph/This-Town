@@ -21,6 +21,8 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/solid.css" integrity="sha384-ypqxM+6jj5ropInEPawU1UEhbuOuBkkz59KyIbbsTu4Sw62PfV3KUnQadMbIoAzq" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/fontawesome.css" integrity="sha384-NnhYAEceBbm5rQuNvCv6o4iIoPZlkaWfvuXVh4XkRNvHWKgu/Mk2nEjFZpPQdwiz" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('external/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('external/css/owl.theme.default.min.css')}}">
 </head>
 
 <div>
@@ -152,6 +154,10 @@
         <main class="py-4">
             @yield('content')
         </main>
+{{--    @include('partials.blog')--}}
+
+
+
     {{--<script type="text/javascript" src="{{mix('js/app.js')}}"></script>--}}
 </div>
 <!-- Scripts -->
@@ -178,5 +184,7 @@
     }
 
 </script>
+
+
 </body>
 </html>
